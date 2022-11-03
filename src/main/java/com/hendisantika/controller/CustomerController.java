@@ -1,7 +1,10 @@
 package com.hendisantika.controller;
 
+import com.hendisantika.entity.Customer;
 import com.hendisantika.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -19,4 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
 
     private final CustomerService customerService;
+
+    @PostMapping("/customer")
+    public Customer saveCustomer(@RequestBody Customer customer) {
+        return customerService.saveCustomer(customer);
+    }
 }
