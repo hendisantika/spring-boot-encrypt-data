@@ -10,6 +10,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import javax.persistence.AttributeConverter;
+import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -56,6 +57,19 @@ public class PIIAttributeConverter implements AttributeConverter<String, String>
                  NoSuchAlgorithmException e) {
             throw new IllegalStateException(e);
             // You can decide to return an empty or null value on error to be stored if don't want to throw exception
+        }
+    }
+
+    @Override
+    public String convertToEntityAttribute(String dbData) {
+        try {
+            Cipher cipher = Cipher.getInstance(AES);
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            return new String(cipher.doFinal(Base64.getDecoder().decode(dbData)));
+        } catch (InvalidKeyException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException |
+                 NoSuchAlgorithmException e) {
+            throw new IllegalStateException(e);
+            // You can decide to return an empty or null value on error to be returned if don't want to throw exception
         }
     }
 }

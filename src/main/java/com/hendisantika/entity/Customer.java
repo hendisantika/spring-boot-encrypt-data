@@ -1,5 +1,6 @@
 package com.hendisantika.entity;
 
+import com.hendisantika.util.PIIAttributeConverter;
 import lombok.Data;
 
 import javax.persistence.Convert;
