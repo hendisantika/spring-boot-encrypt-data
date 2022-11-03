@@ -3,6 +3,7 @@ package com.hendisantika.entity;
 import com.hendisantika.util.PIIAttributeConverter;
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,7 @@ public class Customer implements Serializable {
     private Long id;
 
     @Convert(converter = PIIAttributeConverter.class)
+    @Column(unique = true)
     private String mobile;
 
     @Convert(converter = PIIAttributeConverter.class)

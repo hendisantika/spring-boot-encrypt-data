@@ -26,5 +26,5 @@ spring:
     show-sql: true
 
 server:
-  context-path: /pii-encrypt-demo
+#  context-path: pii-encrypt-demo
   port: 8080
