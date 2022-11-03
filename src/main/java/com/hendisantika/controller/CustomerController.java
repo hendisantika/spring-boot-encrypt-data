@@ -36,4 +36,9 @@ public class CustomerController {
     public Customer getByMobile(@PathVariable String mobile) {
         return customerService.findByMobile(mobile);
     }
+
+    @GetMapping("/find/mobile/jql/{mobile}")
+    public Customer getByMobileJQL(@PathVariable String mobile) {
+        return customerService.findByMobileJQL(mobile);
+    }
 }
