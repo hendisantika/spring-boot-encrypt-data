@@ -13,7 +13,7 @@ spring:
     username: root
     password: root
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       naming:
         strategy: org.hibernate.cfg.EJB3NamingStrategy
