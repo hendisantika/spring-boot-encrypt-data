@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.spec.SecretKeySpec;
 import javax.persistence.AttributeConverter;
 import java.security.Key;
 
@@ -31,5 +32,11 @@ public class PIIAttributeConverter implements AttributeConverter<String, String>
     @Autowired
     public void setEnvironment(Environment environment) {
         PIIAttributeConverter.environment = environment;
+    }
+
+    public PIIAttributeConverter() {
+        // IMPORTANT NOTE: Preferably get the secret from the configuration
+        // environment.getProperty() etc that loads from Vault or some Secret storage
+        key = new SecretKeySpec(SECRET.getBytes(), AES);
     }
 }
