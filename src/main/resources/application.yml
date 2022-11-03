@@ -9,7 +9,7 @@ spring:
     version: ^project.version^
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pii-encrypt-demo?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://localhost:3306/encrypt?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
   jpa:
@@ -19,10 +19,10 @@ spring:
         strategy: org.hibernate.cfg.EJB3NamingStrategy
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
-      ddl-auto: update
-      properties:
-        format_sql: true
-    generate-ddl: true
+      ddl-auto: validate
+    properties:
+      format_sql: true
+    generate-ddl: false
     show-sql: true
 
 server:
