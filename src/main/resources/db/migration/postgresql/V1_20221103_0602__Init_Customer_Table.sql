@@ -1,0 +1,9 @@
+CREATE TABLE CUSTOMERS
+(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    mobile varchar(255) UNIQUE,
+    name   varchar(255)
+);
+
+CREATE
+EXTENSION IF NOT EXISTS pgcrypto;

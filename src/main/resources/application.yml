@@ -1,6 +1,7 @@
 spring:
   profiles:
-    active: dev
+#    active: dev
+    active: postgresql
 ---
 spring:
   profiles: dev
@@ -12,6 +13,8 @@ spring:
     url: jdbc:mysql://localhost:3306/encrypt?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
+  flyway:
+    locations: classpath:/db/migration/mysql
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
@@ -21,10 +24,40 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
       ddl-auto: validate
     properties:
-      format_sql: true
+      hibernate:
+        format_sql: true
     generate-ddl: false
     show-sql: true
 
 server:
 #  context-path: pii-encrypt-demo
+  port: 8080
+---
+spring:
+  profiles: postgresql
+  application:
+    name: pii-encrypt-demo
+    version: ^project.version^
+  datasource:
+    url: jdbc:postgresql://localhost:5432/encrypt
+    username: postgres
+    password: root
+  flyway:
+    locations: classpath:/db/migration/postgresql
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      naming:
+        strategy: org.hibernate.cfg.EJB3NamingStrategy
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    generate-ddl: false
+    show-sql: true
+
+server:
+  #  context-path: pii-encrypt-demo
   port: 8080
