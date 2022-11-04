@@ -1,10 +1,10 @@
 spring:
   profiles:
-#    active: dev
-    active: postgresql
+    active: mysql
+#    active: postgresql
 ---
 spring:
-  profiles: dev
+  profiles: mysql
   application:
     name: pii-encrypt-demo
     version: ^project.version^
