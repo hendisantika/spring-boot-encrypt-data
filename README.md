@@ -68,3 +68,15 @@ SELECT id,name,mobile,
 CAST(aes_decrypt(from_base64(name),"secret-key-12345") AS char) AS 'Decrypted Name',
 CAST(aes_decrypt(from_base64(mobile),"secret-key-12345") AS char) AS 'Decrypted Mobile' FROM `pii-encrypt-demo`.CUSTOMERS;
 ```
+
+### Pitfalls and limitations
+
+So far we have seen that the encryption of specific data fields setup is simple and largely transparent to the
+developer. We can save them as encrypted fields and also match them again by passing plain text that will be encrypted
+by the JPA. There are certainly some pitfalls and limitations
+
+If you are trying to do a like keyword or a partial match, this will fail. Lookups can only be done with a direct match.
+This may not be an issue in most of the use cases, but if you require this capability, I would suggest using alternate
+methods.
+Ensure that the key for the encryption is not stored on the code. This need to be taken from secure secret storage that
+is only accessible to the application from the production environments.
