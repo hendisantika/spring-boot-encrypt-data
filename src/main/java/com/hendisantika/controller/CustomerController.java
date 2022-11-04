@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : spring-boot-encrypt-data
@@ -30,6 +32,11 @@ public class CustomerController {
     @PostMapping
     public Customer saveCustomer(@RequestBody Customer customer) {
         return customerService.saveCustomer(customer);
+    }
+
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.findAll();
     }
 
     @GetMapping("/find/mobile/{mobile}")

@@ -5,6 +5,8 @@ import com.hendisantika.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : spring-boot-encrypt-data
@@ -23,6 +25,10 @@ public class CustomerService {
 
     public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
     }
 
     public Customer findByMobile(String mobile) {
