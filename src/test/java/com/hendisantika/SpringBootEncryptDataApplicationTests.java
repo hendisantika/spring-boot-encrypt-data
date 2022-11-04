@@ -61,4 +61,23 @@ class SpringBootEncryptDataApplicationTests {
         assertThat(customer.getMobile()).isEqualTo(MOBILE);
     }
 
+    @Test
+    public void readEncrypted() {
+        Customer customer = jdbcTemplate.queryForObject(
+                "select * from customers where id = ?",
+                (resultSet, i) -> {
+                    Customer result = new Customer();
+                    result.setId(resultSet.getLong("id"));
+                    result.setName(resultSet.getString("name"));
+                    result.setMobile(resultSet.getString("mobile"));
+                    return result;
+                },
+                id
+        );
+
+        assertThat(customer.getName()).isNotEqualTo(NAME);
+        LOGGER.info("Encrypted name value in DB is {}", customer.getName());
+        assertThat(customer.getMobile()).isNotEqualTo(MOBILE);
+        LOGGER.info("Encrypted email value in DB is {}", customer.getMobile());
+    }
 }
