@@ -58,3 +58,13 @@ respective DB engine.
 
 For example, in the case of MySQL, I can issue the below commands for encrypting and decrypting using the key. Note that
 I am using the aes specific methods.
+
+```sql
+-- Encrypt an existing DB field
+UPDATE CUSTOMERS SET name=CAST(to_base64(aes_encrypt(name,"secret-key-12345")) AS char) WHERE id = 10;
+
+-- Decrypt and select the encrypted fields
+SELECT id,name,mobile,
+CAST(aes_decrypt(from_base64(name),"secret-key-12345") AS char) AS 'Decrypted Name',
+CAST(aes_decrypt(from_base64(mobile),"secret-key-12345") AS char) AS 'Decrypted Mobile' FROM `pii-encrypt-demo`.CUSTOMERS;
+```
