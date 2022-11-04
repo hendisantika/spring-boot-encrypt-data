@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -53,5 +54,11 @@ class SpringBootEncryptDataApplicationTests {
         assertEquals(1, customer.size());
     }
 
+    @Test
+    public void readDecrypted() {
+        Customer customer = customerRepository.findById(id).orElseThrow();
+        assertThat(customer.getName()).isEqualTo(NAME);
+        assertThat(customer.getMobile()).isEqualTo(MOBILE);
+    }
 
 }
