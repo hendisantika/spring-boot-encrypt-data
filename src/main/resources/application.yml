@@ -61,3 +61,10 @@ spring:
 server:
   #  context-path: pii-encrypt-demo
   port: 8080
+
+#V1__Init_Schema.sql
+#V1_20221003_0610__Init_Schema.sql:
+#V2_20221003_0611__Init_Data.sql:
+V3_20221003_0612__Change_Data.sql:
+
+
