@@ -3,6 +3,14 @@
 Encrypt PII ( Personally Identifiable Information ) sensitive data in the database using Spring Boot AttributeConverter
 with direct search capabilities
 
+### Things todo list
+
+1. Clone this repository: `git clone https://github.com/hendisantika/spring-boot-encrypt-data.git`
+2. Navigate to the folder: `cd spring-boot-encrypt-data`
+3. Change your DB Credentials with your own in `application.yml`
+4. Run the application: `mvn clean spring-boot:run`
+5. Import POSTMAN Collection
+
 ### Objective
 
 Enable encryption of certain fields in a datastore.
