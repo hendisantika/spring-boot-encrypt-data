@@ -1,0 +1,81 @@
+{
+  "info": {
+    "_postman_id": "6e2aaea5-2920-4b05-9214-8900333d7bed",
+    "name": "Spring Boot Encrypt Data",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18481390"
+  },
+  "item": [
+    {
+      "name": "Add New Customer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"naruto\",\n    \"mobile\": \"081321411500\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/customers",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "customers"
+          ]
+        },
+        "description": "Add New Customer"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Customer Mobile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/customers/find/mobile/081321411500",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "customers",
+            "find",
+            "mobile",
+            "081321411500"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Mobile By JQL",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/customers/find/mobile/jql/081321411500",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "customers",
+            "find",
+            "mobile",
+            "jql",
+            "081321411500"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
