@@ -25,6 +25,8 @@ invoke the AttributeConverter whenever the field is being persisted or retrieved
 Let’s call the API to save the customer and ensure that the mobile and name fields are encrypted and persisted in the
 database.
 
+![Saving the customer](img/add.png "Saving the customer")
+
 ```shell
 curl --location --request POST 'localhost:8080/customers' \
 --header 'Content-Type: application/json' \
@@ -39,11 +41,15 @@ curl --location --request POST 'localhost:8080/customers' \
 Let’s call the API to find the customer by mobile. Note that here we pass the search string as plain text and JPA will
 do the encryption and matching internally.
 
+![Read the profile using mobile (findBy)](img/find.png "Read the profile using mobile (findBy)")
+
 ```shell
 curl --location --request GET 'localhost:8080/customers/find/mobile/081321411500'
 ```
 
 ### Read the profile using mobile (JPQL query)
+
+![Read the profile using mobile (JPQL query)](img/jql.png "Read the profile using mobile (JPQL query)")
 
 ```shell
 curl --location --request GET 'localhost:8080/customers/find/mobile/jql/081321411500'
