@@ -26,4 +26,13 @@ public class EncryptionDecryptionTest {
         System.out.println("input = " + encryption.encrypt(input));
         assertEquals("4LBE327ydizI2iD4qoRCKA==", encryption.encrypt(input));
     }
+
+    @Test
+    @DisplayName("Decrypt text")
+    void decrypt() {
+        Encryption encryption = new Encryption();
+        String input = "4LBE327ydizI2iD4qoRCKA==";
+        System.out.println("input = " + encryption.decrypt(input));
+        assertEquals("naruto", encryption.decrypt(input));
+    }
 }
